@@ -83,7 +83,7 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "Initial Entries" */
-    describe('Initial Entries', function(done) {
+    describe('Initial Entries', function() {
         beforeEach(function(done) {
           loadFeed(0, function() {
             done();
@@ -102,10 +102,38 @@ $(function() {
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+        var oldTitle,
+            oldEntries,
+            newTitle,
+            newEntries;
+
+        beforeEach(function(done) {
+          loadFeed(0, function() {
+            oldTitle = $('.header-title').text();
+            oldEntries = $('.feed .entry').text()
+            done();
+          });
+        });
+
+        beforeEach(function(done) {
+          loadFeed(1, function() {
+            newTitle = $('.header-title').text();
+            newEntries = $('.feed .entry').text()
+            done();
+          });
+        });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('should update feed entries content', function(done) {
+          expect(newTitle).not.toEqual(oldTitle);
+          expect(oldEntries).not.toEqual(newEntries);
+          done();
+        });
+     });
 }());

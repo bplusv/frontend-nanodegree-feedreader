@@ -21,7 +21,7 @@ $(function() {
         /*
          * Each feed has an url property defined and is not empty.
          */
-        it('each feed has an url', function() {
+        it('should have an url property for each feed', function() {
             allFeeds.forEach(function(item) {
               expect(item.url).toBeDefined();
               expect(item.url).toEqual(jasmine.any(String));
@@ -33,12 +33,21 @@ $(function() {
         /*
          * Each feed has a name property defined and is not empty.
          */
-        it('each feed has a name', function() {
+        it('should have a name property for each feed', function() {
             allFeeds.forEach(function(item) {
               expect(item.name).toBeDefined();
               expect(item.url).toEqual(jasmine.any(String));
               expect(item.name.trim().length).not.toBe(0);
             });
+        });
+
+
+        /*
+         * The side menu should display the feeds.
+         */
+        it('should be displayed on the sidebar menu', function() {
+            var $menuItems = $('.menu li');
+            expect(allFeeds.length).toBe($menuItems.length);
         });
     });
 
@@ -82,7 +91,7 @@ $(function() {
         });
 
         /*
-         * After the initial feed loads, there is at least a single 
+         * After the initial feed loads, there is at least a single
          * .entry element within the .feed container.
          */
         it('should load correctly', function(done) {

@@ -201,7 +201,7 @@ $(function() {
          * The feed entries content should correspond to
          * the specified number of entries.
          */
-        it('should load the nubmer of entries specifed', function() {
+        it('should load the number of entries specifed', function() {
             expect($defaultEntries.length).toEqual(defaultNumEntries);
             expect($specifiedEntries.length).toEqual(numEntries);
         });

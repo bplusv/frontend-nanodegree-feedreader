@@ -8,7 +8,6 @@ $(function() {
      * Test the RSS Feeds array of objects definition.
      */
     describe('RSS Feeds', function() {
-
         /*
          * The feeds are defined as an array and is not empty.
          */
@@ -134,4 +133,35 @@ $(function() {
           done();
         });
      });
+
+    /*
+     * TODO: new feature request.
+     * Feed Entries should display extra information.
+     */
+    describe('Feed Entries', function() {
+      var $entries;
+
+      beforeEach(function(done) {
+        loadFeed(0, function() {
+          $entries = $('.feed .entry');
+          done();
+        });
+      });
+
+      /*
+       * Each entry should display the author within an '.entry-author' element.
+       */
+      it('should display the author for each entry', function() {
+        var $authors = $('.feed .entry .entry-author');
+        expect($entries.length).toEqual($authors.length);
+      });
+
+      /*
+       * Each entry should display its date within an '.entry-date' element.
+       */
+      it('should display the published date for each entry', function() {
+        var $dates = $('.feed .entry .entry-date');
+        expect($entries.length).toEqual($dates.length);
+      });
+    });
 }());

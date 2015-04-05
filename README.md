@@ -15,6 +15,10 @@ To view or edit the actual code for the tests open the file: 'jasmine/spec/feedr
 * New Feature Request: display the author and published date for each feed entry.
 * New Feature Request: should be able to setup the number of feed entries to load.
 
+### Notes
+Instead of checking for the content on the DOM in a specified format, lets just check for the CSS classes as an interface or contract.  
+This way, the tests don't get too coupled or dependent of a particular implementation or format. By being loosely coupled, the tests become refactoring friendly.
+
 ### Consulted Materials
 * [Jasmine](http://jasmine.github.io/) - Behavior-Driven Testing Framework
 * [Jasmine Docs](http://jasmine.github.io/2.1/introduction.html) - Jasmine Documentation

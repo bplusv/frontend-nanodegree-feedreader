@@ -13,6 +13,7 @@ To view or edit the actual code for the tests open the file: 'jasmine/spec/feedr
 ### Aditional Tests
 * On existing RSS Feeds Suite: add test to check the feeds are displayed on the sidebar menu.
 * New Feature Request: display the author and published date for each feed entry.
+* New Feature Request: should be able to setup the number of feed entries to load.
 
 ### Consulted Materials
 * [Jasmine](http://jasmine.github.io/) - Behavior-Driven Testing Framework

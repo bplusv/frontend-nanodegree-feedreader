@@ -22,9 +22,9 @@ $(function() {
          */
         it('should have an url property for each feed', function() {
             allFeeds.forEach(function(item) {
-              expect(item.url).toBeDefined();
-              expect(item.url).toEqual(jasmine.any(String));
-              expect(item.url.trim().length).not.toBe(0);
+                expect(item.url).toBeDefined();
+                expect(item.url).toEqual(jasmine.any(String));
+                expect(item.url.trim().length).not.toBe(0);
             });
         });
 
@@ -34,9 +34,9 @@ $(function() {
          */
         it('should have a name property for each feed', function() {
             allFeeds.forEach(function(item) {
-              expect(item.name).toBeDefined();
-              expect(item.url).toEqual(jasmine.any(String));
-              expect(item.name.trim().length).not.toBe(0);
+                expect(item.name).toBeDefined();
+                expect(item.url).toEqual(jasmine.any(String));
+                expect(item.name.trim().length).not.toBe(0);
             });
         });
 
@@ -51,7 +51,9 @@ $(function() {
     });
 
 
-    /* Test the sidebar menu hide and shows correctly. */
+    /*
+     * Test the sidebar menu hide and shows correctly.
+     */
     describe('The menu', function() {
         var $body = $('body');
         var $menuIcon = $('.menu-icon-link');
@@ -80,13 +82,15 @@ $(function() {
     });
 
 
-    /* Test the initial feed loads and displays correctly. */
+    /*
+     * Test the initial feed loads and displays correctly.
+     */
     describe('Initial Entries', function() {
         beforeEach(function(done) {
-          expect($('.feed .entry').length).toBe(0);
-          loadFeed(0, function() {
-            done();
-          });
+            expect($('.feed .entry').length).toBe(0);
+            loadFeed(0, function() {
+                done();
+            });
         });
 
         /*
@@ -94,13 +98,15 @@ $(function() {
          * .entry element within the .feed container.
          */
         it('should load correctly', function(done) {
-          expect($('.feed .entry').length).not.toBe(0);
-          done();
+            expect($('.feed .entry').length).not.toBe(0);
+            done();
         });
     });
 
 
-    /* Test the selection of a new feed loads and updates content. */
+    /*
+     * Test the selection of a new feed loads and updates content.
+     */
     describe('New Feed Selection', function() {
         var oldTitle,
             oldEntries,
@@ -108,19 +114,19 @@ $(function() {
             newEntries;
 
         beforeEach(function(done) {
-          loadFeed(0, function() {
-            oldTitle = $('.header-title').text();
-            oldEntries = $('.feed .entry').text();
-            done();
-          });
+            loadFeed(0, function() {
+                oldTitle = $('.header-title').text();
+                oldEntries = $('.feed .entry').text();
+                done();
+            });
         });
 
         beforeEach(function(done) {
-          loadFeed(1, function() {
-            newTitle = $('.header-title').text();
-            newEntries = $('.feed .entry').text();
-            done();
-          });
+            loadFeed(1, function() {
+                newTitle = $('.header-title').text();
+                newEntries = $('.feed .entry').text();
+                done();
+            });
         });
 
         /*
@@ -128,40 +134,76 @@ $(function() {
          * the entries within the .feed container are updated.
          */
         it('should update feed entries content', function(done) {
-          expect(newTitle).not.toEqual(oldTitle);
-          expect(newEntries).not.toEqual(oldEntries);
-          done();
+            expect(newTitle).not.toEqual(oldTitle);
+            expect(newEntries).not.toEqual(oldEntries);
+            done();
         });
      });
 
+
     /*
      * TODO: new feature request.
-     * Feed Entries should display extra information.
+     * Test Feed Entries should display extra information.
      */
     describe('Feed Entries', function() {
-      var $entries;
+        var $entries;
 
-      beforeEach(function(done) {
-        loadFeed(0, function() {
-          $entries = $('.feed .entry');
-          done();
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                $entries = $('.feed .entry');
+                done();
+            });
         });
-      });
 
-      /*
-       * Each entry should display the author within an '.entry-author' element.
-       */
-      it('should display the author for each entry', function() {
-        var $authors = $('.feed .entry .entry-author');
-        expect($entries.length).toEqual($authors.length);
-      });
+        /*
+         * Each entry should display its author.
+         */
+        it('should display the author for each entry', function() {
+            var $authors = $('.feed .entry .entry-author');
+            expect($entries.length).toEqual($authors.length);
+        });
 
-      /*
-       * Each entry should display its date within an '.entry-date' element.
-       */
-      it('should display the published date for each entry', function() {
-        var $dates = $('.feed .entry .entry-date');
-        expect($entries.length).toEqual($dates.length);
-      });
+        /*
+         * Each entry should display its date.
+         */
+        it('should display the published date for each entry', function() {
+            var $dates = $('.feed .entry .entry-date');
+            expect($entries.length).toEqual($dates.length);
+        });
+    });
+
+
+    /*
+     * TODO: new feature request.
+     * Test load feed with a number of entries specified (default is 4).
+     */
+    describe('Load Feed Entries with number of entries', function() {
+        var $defaultEntries,
+            $specifiedEntries,
+            defaultNumEntries = 4,
+            numEntries = 10;
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                $defaultEntries = $('.feed .entry');
+                done();
+            });
+        });
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                $specifiedEntries = $('.feed .entry');
+                done();
+            }, numEntries);
+        });
+
+        /*
+         * The feed entries content should correspond to
+         * the specified number of entries.
+         */
+        it('should load the nubmer of entries specifed', function() {
+            expect($defaultEntries.length).toEqual(defaultNumEntries);
+            expect($specifiedEntries.length).toEqual(numEntries);
+        });
     });
 }());

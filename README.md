@@ -2,7 +2,7 @@
 Testing of an existing RSS Feed Reader application.
 
 - Tests written using the behavior-driven Jasmine JavaScript Framework.
-- Test-Driven Development: design of additional new features by writing the tests first.
+- Test Driven Development (TDD): design of additional new features by writing the tests first.
 
 ### Running the tests
 In order to run the unit tests, please open the file index.html in a modern web browser  

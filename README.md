@@ -1,11 +1,11 @@
-# Project FeedReader Testing
+# FeedReader JS Testing
+Testing of an existing RSS Feed Reader application.
 
-This project tests an existing application, a RSS feed reader.  
-The tests use the Jasmine 2.1 javascript testing library.
+- Tests written using the behavior-driven Jasmine JavaScript Framework.
+- Test-Driven Development: design of additional new features by writing the tests first.
 
 ### Running the tests
 In order to run the unit tests, please open the file index.html in a modern web browser  
-(e.g., Internet Explorer >= 9, Google Chrome, Firefox or Safari).
 
 ### Editing the Tests
 To view or edit the actual code for the tests open the file: 'jasmine/spec/feedreader.js'.
